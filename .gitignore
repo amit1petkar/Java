@@ -26,3 +26,4 @@ replay_pid*
 #Intellij
 /.idea/*.*
 /out/production/Java/.idea/*.*
+/out/production/Java/*.*
