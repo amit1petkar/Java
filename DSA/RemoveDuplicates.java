@@ -64,7 +64,7 @@ public class RemoveDuplicates {
         int []a = IntStream.generate(() -> {
             int val = (int)(Math.random()*100);
             return (val*(val%2==0?1:-1));
-        }).limit((long) (3*Math.pow(10,4))).toArray();
+        }).limit((long) (3*10e4)).toArray();
         System.out.println(removeDuplicates.removeDuplicates(a));
     }
 }
