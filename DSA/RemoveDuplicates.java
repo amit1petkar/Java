@@ -1,5 +1,7 @@
 package DSA;
 
+import java.util.stream.IntStream;
+
 /*
 https://leetcode.com/problems/remove-duplicates-from-sorted-array/?envType=study-plan-v2&envId=top-interview-150
 
@@ -49,11 +51,20 @@ nums is sorted in non-decreasing order.
 public class RemoveDuplicates {
     public int removeDuplicates(int[] nums) {
         int idx = 0;
-        for(int i = 1; i < nums.length; i++) {
+        for(int i = 1, size=nums.length; i < size; i++) {
             if(nums[idx] != nums[i]) {
                 nums[++idx] = nums[i];
             }
         }
         return idx+1;
+    }
+
+    public static void main(String[] args) {
+        RemoveDuplicates removeDuplicates = new RemoveDuplicates();
+        int []a = IntStream.generate(() -> {
+            int val = (int)(Math.random()*100);
+            return (val*(val%2==0?1:-1));
+        }).limit((long) (3*Math.pow(10,4))).toArray();
+        System.out.println(removeDuplicates.removeDuplicates(a));
     }
 }
