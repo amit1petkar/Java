@@ -11,7 +11,7 @@ public class Streams01 {
         //Stream of range of integers
         System.out.println("---------RANGE CLOSED STREAM---------");
         List<Integer> l1 = new ArrayList<>();
-        IntStream.rangeClosed(1,20) //int values from 1 to 100
+        IntStream.rangeClosed(1,20) //int values from 1 to 20
                 .boxed() //Integer values
                 .forEach(l1::add);
         System.out.println(l1);
