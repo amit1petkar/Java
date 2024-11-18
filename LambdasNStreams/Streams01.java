@@ -19,7 +19,8 @@ public class Streams01 {
         //stream from collections
         System.out.println("---------COLLECTIONS STREAM---------");
         System.out.println(l1.stream()
-                .reduce(Integer::sum).get());
+                .reduce(Integer::sum).get()); //reduce without identity value returns Optional.
+                                              // Better: .reduce(0, Integer::sum)
 
         //Stream of hardcoded values
         System.out.println("---------STREAM OF HARDCODED VALUES---------");
