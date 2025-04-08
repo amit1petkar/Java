@@ -69,6 +69,15 @@ public class Streams02 {
                 .boxed() // Collections expects objects; not primitives
                 .collect(Collectors.toList())); //Alternative: IntStream().toList()
 
+        Map<Integer, Integer> collect = IntStream.rangeClosed(1, 10).boxed()
+                .collect(Collectors.toMap(Function.identity(), x -> x * 2));
+        System.out.println(">>>>"+collect);
+
+        Map<Integer, Integer> collect2 = IntStream
+                .rangeClosed(1, 10).boxed()
+                .collect(Collectors.toMap(x->x%2, Function.identity(), Integer::sum, HashMap::new ));
+        System.out.println(">>>>"+collect2);
+
         Function<Integer, String> evenOrOdd = x-> x%2==0?"EVEN":"ODD";
         println.accept("STREAM OF VALUES TO MAP:"+IntStream.rangeClosed(1, 10).boxed()
                 .collect(Collectors.groupingBy(evenOrOdd)));
