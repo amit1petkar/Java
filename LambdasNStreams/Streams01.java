@@ -64,6 +64,7 @@ public class Streams01 {
         Integer j = IntStream.generate(randomInt)
                 .boxed()
                 .limit(10)
+                .sequential() //WILL RUN IN SEQUENTIAL/SYNCHRONOUS MANNER. NO PARALLELISM.
                 .skip(1) //SKIP 1 ELEMENT. SO 9 ELEMENTS TO PROCESS
                 .distinct() //REMOVES DUPLICATES
                 .filter(isEven) //FILTER TO EVEN NOS

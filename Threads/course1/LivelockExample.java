@@ -11,7 +11,7 @@ public class LivelockExample {
     public void process1() {
 
         while (true) {
-            System.out.println("Process1 trying for lock1");
+            System.out.println("Process1 getting lock1");
             lock1.lock();
             System.out.println("Process1 got lock1");
             try {
@@ -30,14 +30,15 @@ public class LivelockExample {
             }
             break;
         }
+        System.out.println("Process1 unlocked lock1");
         lock1.unlock();
-        lock2.unlock();
+//        lock2.unlock();
     }
 
     public void process2() {
 
         while (true) {
-            System.out.println("Process2 trying for lock2");
+            System.out.println("Process2 getting lock2");
             lock2.lock();
             System.out.println("Process2 got lock2");
             try {
@@ -56,7 +57,8 @@ public class LivelockExample {
             }
             break;
         }
-        lock1.unlock();
+//        lock1.unlock();
+        System.out.println("Process2 unlocked lock2");
         lock2.unlock();
     }
 

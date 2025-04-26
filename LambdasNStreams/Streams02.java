@@ -71,17 +71,21 @@ public class Streams02 {
 
         Map<Integer, Integer> collect = IntStream.rangeClosed(1, 10).boxed()
                 .collect(Collectors.toMap(Function.identity(), x -> x * 2));
-        System.out.println(">>>>"+collect);
+        System.out.println("STREAM OF VALUES TO MAP WITH NO MERGE FUNCTION >>>>" + collect);
 
+        //if you want to merge (have single value instead of collection of) collided values, use with mergeFunction (BinaryOperator).
+        //Provide mapFactory (HashMap) for any special Map (like TreeMap etc.)
         Map<Integer, Integer> collect2 = IntStream
                 .rangeClosed(1, 10).boxed()
                 .collect(Collectors.toMap(x->x%2, Function.identity(), Integer::sum, HashMap::new ));
-        System.out.println(">>>>"+collect2);
+        System.out.println("STREAM OF VALUES TO MAP WITH MERGE AND SUPPLIER>>>>" + collect2);
 
+        //if you want to have collection for collided values, use grouping by.
         Function<Integer, String> evenOrOdd = x-> x%2==0?"EVEN":"ODD";
         println.accept("STREAM OF VALUES TO MAP:"+IntStream.rangeClosed(1, 10).boxed()
                 .collect(Collectors.groupingBy(evenOrOdd)));
 
+        //Furthermore, for grouped values, if you want to process (merge or collect) them
         println.accept("STREAM OF VALUES TO MAP EG.2:"+IntStream.rangeClosed(1, 10).boxed()
                 .collect(Collectors.groupingBy(evenOrOdd,
                         Collectors.counting()))); //downstream collector to count the elements of group

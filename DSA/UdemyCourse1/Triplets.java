@@ -1,6 +1,9 @@
 package DSA.UdemyCourse1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 /*
 Triplets
@@ -26,7 +29,7 @@ public class Triplets {
         System.out.println(useTwoPointers_best(input, target).orElse(null));
     }
 
-    //Inspired by Pairs.twoPointers_3rdBest as it gives best time complexity; provided the array is sorted.
+    //Inspired by Pairs.twoPointers_3rdBest as it gives best time complexity; provided the array is sorted (Sorting time complexity: O(nLogn)).
     //Time complexity = O(n) (iterate) * O(n) (using Pairs.twoPointers_3rdBest logic) approxs. to O(n^2)
     //Space complexity = O(1)
     //Note: I cannot call Pairs.twoPointers_3rdBest as it returns only one pair. There could be many possibilities.
